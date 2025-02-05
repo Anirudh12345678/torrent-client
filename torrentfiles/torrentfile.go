@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/rand"
 	"crypto/sha1"
+	"log"
 	"os"
 
 	"fmt"
@@ -103,6 +104,7 @@ func (t *TorrentFile) DownloadToFile(path string) error {
 		return err
 	}
 
+	log.Println(t.Announce)
 	peers, err := t.requestPeers(peerID, Port)
 	if err != nil {
 		return err

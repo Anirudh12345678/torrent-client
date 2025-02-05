@@ -185,6 +185,7 @@ func (t *Torrent) calculatePieceSize(index int) int {
 // Download downloads the torrent. This stores the entire file in memory.
 func (t *Torrent) Download() ([]byte, error) {
 	log.Println("Starting download for", t.Name)
+	log.Println(t.Peers)
 	// Init queues for workers to retrieve work and send results
 	workQueue := make(chan *pieceWork, len(t.PieceHashes))
 	results := make(chan *pieceResult)
